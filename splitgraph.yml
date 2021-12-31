@@ -1,0 +1,176 @@
+repositories:
+- namespace: CHANGEME
+  repository: mongo_fdw
+  # Catalog-specific metadata for the repository. Optional.
+  metadata:
+    readme:
+      text: Readme
+    description: Description of the repository
+    topics:
+    - sample_topic
+  # Data source settings for the repository. Optional.
+  external:
+    # Name of the credential that the plugin uses. This can also be a credential_id if the
+    # credential is already registered on Splitgraph.
+    credential: mongo_fdw
+    plugin: mongo_fdw
+    # Plugin-specific parameters matching the plugin's parameters schema
+    params:
+      host: ''  # REQUIRED
+      port: 0 # REQUIRED
+    tables:
+      sample_table:
+        # Plugin-specific table parameters matching the plugin's schema
+        options:
+          database: ''  # REQUIRED
+          collection: '' # REQUIRED
+        # Schema of the table, a list of objects with `name` and `type`. If set to `[]`, will infer. 
+        schema: []
+    # Whether live querying is enabled for the plugin (creates a "live" tag in the
+    # repository proxying to the data source). The plugin must support live querying.
+    is_live: true
+    # Ingestion schedule settings. Disable this if you're using GitHub Actions or other methods
+    # to trigger ingestion.
+    schedule:
+- namespace: CHANGEME
+  repository: airbyte-strava
+  # Catalog-specific metadata for the repository. Optional.
+  metadata:
+    readme:
+      text: Readme
+    description: Description of the repository
+    topics:
+    - sample_topic
+  # Data source settings for the repository. Optional.
+  external:
+    # Name of the credential that the plugin uses. This can also be a credential_id if the
+    # credential is already registered on Splitgraph.
+    credential: airbyte-strava
+    plugin: airbyte-strava
+    # Plugin-specific parameters matching the plugin's parameters schema
+    params:
+      normalization_mode: basic  # Post-ingestion normalization. Whether to normalize raw Airbyte tables. `none` is no normalization, `basic` is Airbyte's basic normalization, `custom` is a custom dbt transformation on the data.. One of none, basic, custom
+      normalization_git_branch: master # dbt model Git branch. Branch or commit hash to use for the normalization dbt project.
+      client_id: '12345' # Client ID. The Client ID of your Strava developer application.
+      athlete_id: '17831421' # Athlete ID. The Athlete ID of your Strava developer application.
+      start_date: '2016-12-31 23:59:59' # Start Date. UTC date and time. Any data before this date will not be replicated.
+    tables:
+      sample_table:
+        # Plugin-specific table parameters matching the plugin's schema
+        options:
+          airbyte_cursor_fields:  # Cursor field(s). Fields in this stream to be used as a cursor for incremental replication (overrides Airbyte configuration's cursor_field)
+          - ''
+          airbyte_primary_key_fields: # Primary key field(s). Fields in this stream to be used as a primary key for deduplication (overrides Airbyte configuration's primary_key)
+          - ''
+        # Schema of the table, a list of objects with `name` and `type`. If set to `[]`, will infer. 
+        schema: []
+    # Whether live querying is enabled for the plugin (creates a "live" tag in the
+    # repository proxying to the data source). The plugin must support live querying.
+    is_live: false
+    # Ingestion schedule settings. Disable this if you're using GitHub Actions or other methods
+    # to trigger ingestion.
+    schedule:
+- namespace: CHANGEME
+  repository: airbyte-amplitude
+  # Catalog-specific metadata for the repository. Optional.
+  metadata:
+    readme:
+      text: Readme
+    description: Description of the repository
+    topics:
+    - sample_topic
+  # Data source settings for the repository. Optional.
+  external:
+    # Name of the credential that the plugin uses. This can also be a credential_id if the
+    # credential is already registered on Splitgraph.
+    credential: airbyte-amplitude
+    plugin: airbyte-amplitude
+    # Plugin-specific parameters matching the plugin's parameters schema
+    params:
+      normalization_mode: basic  # Post-ingestion normalization. Whether to normalize raw Airbyte tables. `none` is no normalization, `basic` is Airbyte's basic normalization, `custom` is a custom dbt transformation on the data.. One of none, basic, custom
+      normalization_git_branch: master # dbt model Git branch. Branch or commit hash to use for the normalization dbt project.
+      start_date: '2021-01-25T00:00:00Z' # UTC date and time in the format 2021-01-25T00:00:00Z. Any data before this date will not be replicated.
+    tables:
+      sample_table:
+        # Plugin-specific table parameters matching the plugin's schema
+        options:
+          airbyte_cursor_fields:  # Cursor field(s). Fields in this stream to be used as a cursor for incremental replication (overrides Airbyte configuration's cursor_field)
+          - ''
+          airbyte_primary_key_fields: # Primary key field(s). Fields in this stream to be used as a primary key for deduplication (overrides Airbyte configuration's primary_key)
+          - ''
+        # Schema of the table, a list of objects with `name` and `type`. If set to `[]`, will infer. 
+        schema: []
+    # Whether live querying is enabled for the plugin (creates a "live" tag in the
+    # repository proxying to the data source). The plugin must support live querying.
+    is_live: false
+    # Ingestion schedule settings. Disable this if you're using GitHub Actions or other methods
+    # to trigger ingestion.
+    schedule:
+- namespace: CHANGEME
+  repository: airbyte-twilio
+  # Catalog-specific metadata for the repository. Optional.
+  metadata:
+    readme:
+      text: Readme
+    description: Description of the repository
+    topics:
+    - sample_topic
+  # Data source settings for the repository. Optional.
+  external:
+    # Name of the credential that the plugin uses. This can also be a credential_id if the
+    # credential is already registered on Splitgraph.
+    credential: airbyte-twilio
+    plugin: airbyte-twilio
+    # Plugin-specific parameters matching the plugin's parameters schema
+    params:
+      normalization_mode: basic  # Post-ingestion normalization. Whether to normalize raw Airbyte tables. `none` is no normalization, `basic` is Airbyte's basic normalization, `custom` is a custom dbt transformation on the data.. One of none, basic, custom
+      normalization_git_branch: master # dbt model Git branch. Branch or commit hash to use for the normalization dbt project.
+      start_date: '2020-10-01T00:00:00Z' # Replication Start Date. UTC date and time in the format 2020-10-01T00:00:00Z. Any data before this date will not be replicated.
+    tables:
+      sample_table:
+        # Plugin-specific table parameters matching the plugin's schema
+        options:
+          airbyte_cursor_fields:  # Cursor field(s). Fields in this stream to be used as a cursor for incremental replication (overrides Airbyte configuration's cursor_field)
+          - ''
+          airbyte_primary_key_fields: # Primary key field(s). Fields in this stream to be used as a primary key for deduplication (overrides Airbyte configuration's primary_key)
+          - ''
+        # Schema of the table, a list of objects with `name` and `type`. If set to `[]`, will infer. 
+        schema: []
+    # Whether live querying is enabled for the plugin (creates a "live" tag in the
+    # repository proxying to the data source). The plugin must support live querying.
+    is_live: false
+    # Ingestion schedule settings. Disable this if you're using GitHub Actions or other methods
+    # to trigger ingestion.
+    schedule:
+- namespace: CHANGEME
+  repository: dbt-sample
+  external:
+    plugin: dbt
+    credential: dbt-sample
+    params:
+      sources:
+      - dbt_source_name: CHANGEME_mongo_fdw
+        namespace: CHANGEME
+        repository: mongo_fdw
+        hash_or_tag: latest
+      - dbt_source_name: CHANGEME_airbyte_strava
+        namespace: CHANGEME
+        repository: airbyte-strava
+        hash_or_tag: latest
+      - dbt_source_name: CHANGEME_airbyte_amplitude
+        namespace: CHANGEME
+        repository: airbyte-amplitude
+        hash_or_tag: latest
+      - dbt_source_name: CHANGEME_airbyte_twilio
+        namespace: CHANGEME
+        repository: airbyte-twilio
+        hash_or_tag: latest
+      git_branch: $THIS_SHA
+    is_live: false
+    tables: {}
+  metadata:
+    description: Sample dbt model
+    readme:
+      text: "## Sample dbt model\n\nThis is an autogenerated model referencing data\
+        \ from:\n\n  * [/CHANGEME/mongo_fdw](/CHANGEME/mongo_fdw)\n  * [/CHANGEME/airbyte-strava](/CHANGEME/airbyte-strava)\n\
+        \  * [/CHANGEME/airbyte-amplitude](/CHANGEME/airbyte-amplitude)\n  * [/CHANGEME/airbyte-twilio](/CHANGEME/airbyte-twilio)"
